@@ -1,0 +1,76 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+}
+body{
+    font-family: Helvetica, Arial, sans-serif;
+}
+#navbar{
+    padding: 1rem 3rem;
+    width: 100%;
+    box-shadow: 0px 5px 5px 1px rgb(205, 205, 205);
+}
+#add-book-cont{
+    display: flex;
+    justify-content: end;
+    padding: 2rem;
+}
+#add-book-cont button{
+    outline: none;
+    border: none;
+    background-color: rgb(248, 248, 248);
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    transition: all .5s ease;
+}
+#add-book-cont button:hover{
+    background-color: rgb(237, 237, 237);
+}
+#add-book-cont button:active{
+    scale: .96;
+}
+#logo{
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgb(57, 194, 194);
+}
+#container{
+    /* background-color: rgb(226, 246, 246); */
+    background-color: rgb(248, 248, 248);
+    padding: 4rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+.card{
+    color: white;
+    display: grid;
+    text-align: center;
+    height: 300px;
+    align-items: center;
+    border-radius: 12px;
+    background-color: rgb(57, 194, 194);
+    font-size: 1rem;
+}
+.card button{
+    outline: none;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    background-color: rgb(226, 246, 246);
+    color: rgb(57, 194, 194);
+    font-size: 1.1rem;
+}
+
+button{
+    cursor: pointer;
+}
+.title{
+    font-size: 2rem;
+    font-weight: bold;
+}
