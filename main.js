@@ -12,4 +12,17 @@ Book.prototype.info = function (){
 }
 
 
+const library = [];
 
+
+
+function addBookToLibrary(){
+
+    let title;
+    let author;
+    let pageNumber;
+    let isRead;
+
+    const newBook = new Book(title, author, pageNumber, isRead);
+    library.push(newBook);
+}
