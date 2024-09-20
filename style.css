@@ -14,6 +14,11 @@ body{
     width: 100%;
     box-shadow: 0px 5px 5px 1px rgb(205, 205, 205);
 }
+#logo{
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgb(57, 194, 194);
+}
 #add-book-cont{
     display: flex;
     justify-content: end;
@@ -26,7 +31,7 @@ body{
     font-size: 2rem;
     padding: 1rem 2rem;
     border-radius: 12px;
-    transition: all .5s ease;
+    transition: all .2s ease;
 }
 #add-book-cont button:hover{
     background-color: rgb(237, 237, 237);
@@ -34,13 +39,7 @@ body{
 #add-book-cont button:active{
     scale: .96;
 }
-#logo{
-    font-size: 3rem;
-    font-weight: 700;
-    color: rgb(57, 194, 194);
-}
 #container{
-    /* background-color: rgb(226, 246, 246); */
     background-color: rgb(248, 248, 248);
     padding: 4rem 4rem;
     display: grid;
@@ -73,4 +72,77 @@ button{
 .title{
     font-size: 2rem;
     font-weight: bold;
+}
+form{
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(300px, 50%, 400px);
+    padding: 2rem;
+    border-radius: 12px;
+    z-index: 2;
+    transition: all .1s ease;
+}
+form div, form p, label:not(.radio){
+    margin-bottom: 15px;
+}
+input:not(input[type="radio"], input[type="submit"]){
+    border: none;
+    outline: none;
+    background-color: rgb(248, 248, 248);
+    border-radius: 6px;
+    height: 2rem;
+    width: 100%;
+    padding: 0rem 1rem;
+    font-size: 1.1rem;
+}
+input[type="radio"]{
+    width: 20px;
+    height: 20px;
+    accent-color: rgb(57, 194, 194);
+}
+input[type="submit"]{
+    outline: none;
+    border: none;
+    background-color: rgb(248, 248, 248);
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    width: 100%;
+    background-color: rgb(57, 194, 194);
+    color: white;
+    cursor: pointer;
+}
+label, form p{
+    font-size: 1.2rem;
+}
+.radio{
+    text-decoration: underline;
+}
+label:not(.radio){
+    display: block;
+}
+form div:last-of-type{
+    /* background-color: red; */
+}
+#book-read-yes{
+    margin-right: 25px;
+}
+#shadow{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: 1;
+    transition: all .5s ease;
+}
+
+.hidden{
+    visibility: hidden;
+    opacity: 0;
 }

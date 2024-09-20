@@ -13,37 +13,77 @@ Book.prototype.info = function (){
 
 const addBookBtn = document.querySelector("#add-book");
 const bookContainer = document.querySelector("#container");
+const form = document.querySelector("form");
+const shadow = document.querySelector("#shadow");
+
+const titleInput = document.querySelector("#title");
+const authorInput = document.querySelector("#author");
+const pageNumberInput = document.querySelector("#page-number");
+const radioButtons = {
+    yes: document.querySelector("#book-read-yes"),
+    no: document.querySelector("#book-read-no")
+};
 
 const library = [];
 
+const submitBtn = document.querySelector("input[value=Submit]")
 
-function addBookToLibrary(){
 
-    let title;
-    let author;
-    let pageNumber;
+addBookBtn.addEventListener("click", toggleForm);
+shadow.addEventListener("click", toggleForm);
+
+submitBtn.addEventListener("click", e => {
+
+    addBookToLibrary(e);
+});
+
+function clearGrid(){
+    bookContainer.innerHTML = "";
+}
+
+function addBookToLibrary(e){
+
+    e.preventDefault();
+
+    let title = titleInput.value;
+    let author = authorInput.value;
+    let pageNumber = pageNumberInput.value;
     let isRead;
 
-    const newBook = new Book(title, author, pageNumber, isRead);
-    library.push(newBook);
+    radioButtons.yes.checked ? isRead = true : isRead = false;
+
+    if(title === "" || author === "" || pageNumber === "" || isRead === undefined){
+        alert("Please complete the form.")
+    }else{
+        const newBook = new Book(title, author, pageNumber, isRead);
+        library.push(newBook);
+        toggleForm();
+        clearGrid();
+        parseLibrary();
+    }
 }
 
 
-let book1 = new Book("Millionaire Fastlane", "MJ Demarco", 355, true);
-let book2 = new Book("Life, Liberty and the Pursuit of Entrepreneurship", "MJ Demarco", 402, true);
-let book3 = new Book("The Self-Taught Programmer", "Cory Althoff", 207, true);
 
 
-library.push(book1, book2, book3)
+
+function toggleForm(){
+
+    form.classList.toggle("hidden");
+    shadow.classList.toggle("hidden");
+    titleInput.value = "";
+    authorInput.value = "";
+    pageNumberInput.value = "";
+    radioButtons.yes.checked = false;
+    radioButtons.no.checked = false;
+}
 
 function parseLibrary(){
 
     for(let book of library){
-        createBookCard(book)
+        createBookCard(book);
     }
 }
-
-parseLibrary()
 
 function createBookCard(book){
 
@@ -67,7 +107,8 @@ function createBookCard(book){
 
     const btn = document.createElement("button");
     btn.setAttribute("class", "is-read");
-    btn.textContent = "Stuff here";
+    btn.textContent = book.isRead ? "You've read this book" : "You haven't read this book";
+    btn.style.color = book.isRead ? "darkgreen" : "indianred";
 
     btnContainerDiv.appendChild(btn);
     bookCard.appendChild(titleDiv);

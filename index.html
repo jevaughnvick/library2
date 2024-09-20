@@ -16,17 +16,32 @@
     </div>
     <div id="container">
         <!-- js -->
-        <div class="card">
-            <div class="title">Millionaire Fastlane</div>
-            <div class="author">MJ Demarco</div>
-            <div class="pageNumber">355</div>
-            <div class="button-cont">
-                <button class="is-read">Read or not read yet</button>
-            </div>
-        </div>
-        
-        
-        
     </div>
+    <!-- absolute -->
+    <form action="" method="" class="hidden">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" name="" id="title">
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input type="text" name="" id="author">
+        </div>
+        <div>
+            <label for="page-number">Number of Pages</label>
+            <input type="text" name="" id="page-number">
+        </div>
+        <div>
+            <p>
+                Have you read it?
+            </p>
+            <label class="radio" for="book-read-yes">Yes</label>
+            <input type="radio" name="book-read" id="book-read-yes">
+            <label class="radio" for="book-read-no">No</label>
+            <input type="radio" name="book-read" id="book-read-no">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    <div id="shadow" class="hidden"></div>
 </body>
 </html>
