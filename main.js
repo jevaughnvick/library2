@@ -24,7 +24,7 @@ const radioButtons = {
     no: document.querySelector("#book-read-no")
 };
 
-const library = [];
+let library = [];
 
 const submitBtn = document.querySelector("input[value=Submit]")
 
@@ -58,13 +58,16 @@ function addBookToLibrary(e){
         const newBook = new Book(title, author, pageNumber, isRead);
         library.push(newBook);
         toggleForm();
-        clearGrid();
-        parseLibrary();
+        makeGrid();
     }
 }
 
 
+function makeGrid(){
 
+    clearGrid();
+    parseLibrary();
+}
 
 
 function toggleForm(){
@@ -85,10 +88,21 @@ function parseLibrary(){
     }
 }
 
+
+function removeBook(e){
+
+    const bookCard = e.target.parentNode.parentNode;
+    const bookIndex = bookCard.dataset.bookIndex;
+    alert(`"${library[bookIndex].title}" was removed.`);
+    library = library.filter(book => book.title !== library[bookIndex].title);
+    makeGrid();
+}
+
 function createBookCard(book){
 
     const bookCard = document.createElement("div");
     bookCard.setAttribute("class", "card");
+    bookCard.setAttribute("data-book-index", library.indexOf(book));
 
     const titleDiv = document.createElement("div");
     titleDiv.setAttribute("class", "title");
@@ -103,17 +117,27 @@ function createBookCard(book){
     pageNumberDiv.textContent = book.pageNumber;
 
     const btnContainerDiv = document.createElement("div");
-    btnContainerDiv.setAttribute("class", "button-cont");
 
     const btn = document.createElement("button");
-    btn.setAttribute("class", "is-read");
     btn.textContent = book.isRead ? "You've read this book" : "You haven't read this book";
     btn.style.color = book.isRead ? "darkgreen" : "indianred";
 
+    const btnContainerDivTwo = document.createElement("div");
+    btnContainerDivTwo.style.marginBottom = "10px";
+
+    const removeBtn = document.createElement("button");
+    removeBtn.setAttribute("id", "remove-btn");
+    removeBtn.textContent = "Remove book";
+    removeBtn.style.color = "red";
+    removeBtn.onclick = removeBook;
+
+
     btnContainerDiv.appendChild(btn);
+    btnContainerDivTwo.appendChild(removeBtn);
     bookCard.appendChild(titleDiv);
     bookCard.appendChild(authorDiv);
     bookCard.appendChild(pageNumberDiv);
     bookCard.appendChild(btnContainerDiv);
+    bookCard.appendChild(btnContainerDivTwo);
     bookContainer.appendChild(bookCard);
 }
